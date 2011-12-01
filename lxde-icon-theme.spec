@@ -21,13 +21,13 @@ This package contains nuoveXT2 icon theme for LXDE.
 %configure2_5x
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 
 touch %buildroot%_iconsdir/nuoveXT2/icon-theme.cache
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %update_icon_cache nuoveXT2
