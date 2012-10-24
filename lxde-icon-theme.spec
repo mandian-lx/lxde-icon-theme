@@ -1,7 +1,7 @@
 Summary:	LXDE icon theme
 Name:		lxde-icon-theme
-Version:	0.0.1
-Release:	3
+Version:	0.5.0
+Release:	1
 License:	LGPLv2+
 Group:		Graphical desktop/Other
 URL:		http://www.lxde.org
@@ -14,6 +14,7 @@ This package contains nuoveXT2 icon theme for LXDE.
 
 %prep
 %setup -q
+find -name .gitignore -delete
 
 %build
 %configure2_5x
@@ -31,7 +32,10 @@ touch %buildroot%_iconsdir/nuoveXT2/icon-theme.cache
 
 %files
 %dir %{_iconsdir}/nuoveXT2
-%{_iconsdir}/nuoveXT2/*/*/*
-%{_iconsdir}/nuoveXT2/extra/*
-%{_iconsdir}/nuoveXT2/index.theme
+%dir %{_iconsdir}/nuoveXT2/??*x*
+%dir %{_iconsdir}/nuoveXT2/??*x*/*
+%{_iconsdir}/nuoveXT2/??*x*/*/*
+%dir %{_iconsdir}/nuoveXT2/extra
+%{_iconsdir}/nuoveXT2/extra/*.png
+#%{_iconsdir}/nuoveXT2/index.theme
 %ghost %{_iconsdir}/nuoveXT2/icon-theme.cache
