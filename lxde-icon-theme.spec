@@ -22,7 +22,7 @@ find -name .gitignore -delete
 %install
 %makeinstall_std
 
-touch %buildroot%_iconsdir/nuoveXT2/icon-theme.cache
+touch %{buildroot}%{_iconsdir}/nuoveXT2/icon-theme.cache
 
 %post
 %update_icon_cache nuoveXT2
