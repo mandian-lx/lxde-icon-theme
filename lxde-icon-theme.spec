@@ -1,34 +1,25 @@
 Summary:	LXDE icon theme
 Name:		lxde-icon-theme
-Version:	0.5.0
-Release:	9
+Version:	0.5.1
+Release:	1
 License:	LGPLv2+
 Group:		Graphical desktop/Other
 URL:		http://www.lxde.org
-Source0:	http://freefr.dl.sourceforge.net/project/lxde/LXDE%20Icon%20Theme/%{name}-%{version}/%{name}-%{version}.tar.bz2
+Source0:	https://downloads.sourceforge.net/lxde/%{name}-%{version}.tar.xz
 BuildArch:	noarch
+
 %rename		nuoveXT2-icon-theme
 
 %description
+Lightweight X11 Desktop Environment project (a.k.a LXDE) aimed to provide a
+new desktop environment which is useful enough and keep resource usage lower
+at the same time. Useabiliy, speed, and memory usage are our main concern.
+
+Unlike other tightly integrated desktops LXDE strives to be modular, so each
+component can be used independently with few dependencies. This makes
+porting LXDE to different distributions and platforms easier.
+
 This package contains nuoveXT2 icon theme for LXDE.
-
-%prep
-%setup -q
-find -name .gitignore -delete
-
-%build
-%configure2_5x
-
-%install
-%makeinstall_std
-
-touch %{buildroot}%{_iconsdir}/nuoveXT2/icon-theme.cache
-
-%post
-%update_icon_cache nuoveXT2
-
-%postun
-%clean_icon_cache nuoveXT2
 
 %files
 %dir %{_iconsdir}/nuoveXT2
@@ -40,6 +31,27 @@ touch %{buildroot}%{_iconsdir}/nuoveXT2/icon-theme.cache
 #%{_iconsdir}/nuoveXT2/index.theme
 %ghost %{_iconsdir}/nuoveXT2/icon-theme.cache
 
+#----------------------------------------------------------------------
+
+%prep
+%setup -q
+%apply_patches
+
+find -name .gitignore -delete
+
+%build
+%configure
+
+%install
+%makeinstall_std
+
+touch %{buildroot}%{_iconsdir}/nuoveXT2/icon-theme.cache
+
+%post
+%update_icon_cache nuoveXT2
+
+%postun
+%clean_icon_cache nuoveXT2
 
 %changelog
 * Wed Oct 24 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.5.0-1
